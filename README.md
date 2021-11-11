@@ -23,13 +23,57 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
     * Username = scalability_lab
     * SSH publi key = Su llave ssh publica
 
+### Parte 1.1 - Llave SSH publica
+
+* Crearemos en Azure Cloud shell, en nuestro caso lo haremos con Azure Cloud Shell (bash)
+
+<img width="700" height="700" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/02-CreacionSSH.png" alt="bash-console">
+<br>
+
+
+* Crearemos un llave SSH publica ejecutando el siguiente comando(el siguiente comando crea un par de claves SSH con ayuda del cifrado RSA y una longitud en bits de 4096).
+
+    ```bash
+    ssh-keygen -m PEM -t rsa -b 4096
+    ```
+<img width="700" height="700" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/01-CreacionBash.png" alt="creating-ssh">
+<br>
+
+* Consultaremos que llave SSH generamos, con el siguiente comando
+
+    ```bash
+    cat ~/.ssh/id_rsa.pub
+    ```
+
+<img width="700" height="700" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/04-VirtualMachine.png" alt="virtual-machine">
+<br>
+
+### Configuracion de maquina virtual
+
 ![Imágen 1](images/part1/part1-vm-basic-config.png)
+
+
+### Maquina 
+
+<img width="700" height="700" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/03-PublicSSH.png" alt="public-ssh">
+<br>
+<br>
 
 2. Para conectarse a la VM use el siguiente comando, donde las `x` las debe remplazar por la IP de su propia VM.
 
     `ssh scalability_lab@xxx.xxx.xxx.xxx`
 
+<img width="700" height="700" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/05-conexionVM.png" alt="VM-connection">
+<br>
+<br>
+
+
 3. Instale node, para ello siga la sección *Installing Node.js and npm using NVM* que encontrará en este [enlace](https://linuxize.com/post/how-to-install-node-js-on-ubuntu-18.04/).
+
+<img width="700" height="700" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/06-nodeInstallation.png" alt="node-installation">
+<br>
+
+
 4. Para instalar la aplicación adjunta al Laboratorio, suba la carpeta `FibonacciApp` a un repositorio al cual tenga acceso y ejecute estos comandos dentro de la VM:
 
     `git clone <your_repo>`
@@ -38,11 +82,20 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 
     `npm install`
 
+
+<img width="700" height="700" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/07-gitHub-npmInstall.png" alt="node-github">
+<br>
+
+
+
 5. Para ejecutar la aplicación puede usar el comando `npm FibinacciApp.js`, sin embargo una vez pierda la conexión ssh la aplicación dejará de funcionar. Para evitar ese compartamiento usaremos *forever*. Ejecute los siguientes comando dentro de la VM.
 
     `npm install forever -g`
 
     `forever start FibinacciApp.js`
+
+<img width="700" height="700" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/08-npmForever.png" alt="npm-forever">
+<br>
 
 6. Antes de verificar si el endpoint funciona, en Azure vaya a la sección de *Networking* y cree una *Inbound port rule* tal como se muestra en la imágen. Para verificar que la aplicación funciona, use un browser y user el endpoint `http://xxx.xxx.xxx.xxx:3000/fibonacci/6`. La respuesta debe ser `The answer is 8`.
 
@@ -50,15 +103,34 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 
 7. La función que calcula en enésimo número de la secuencia de Fibonacci está muy mal construido y consume bastante CPU para obtener la respuesta. Usando la consola del Browser documente los tiempos de respuesta para dicho endpoint usando los siguintes valores:
     * 1000000
+
+    <img width="700" height="700" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/09-response-1000000.png" alt="response-1000000">
+    <br>
+
     * 1010000
+
+    <img width="700" height="700" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/09-response-1010000.png" alt="response-1010000">
+    <br>
+
     * 1020000
+
+    <img width="700" height="700" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/09-response-1020000.png" alt="response-1020000">
+    <br>
+
     * 1030000
+
+    <img width="700" height="700" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/09-response-1030000.png" alt="response-1030000">
+    <br>
+
     * 1040000
-    * 1050000
-    * 1060000
-    * 1070000
-    * 1080000
-    * 1090000    
+
+    <img width="700" height="700" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/09-response-1040000.png" alt="response-1040000">
+    <br>
+    
+    * 1090000  
+
+    <img width="700" height="700" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/09-response-1090000.png" alt="response-1090000">
+    <br>
 
 8. Dírijase ahora a Azure y verifique el consumo de CPU para la VM. (Los resultados pueden tardar 5 minutos en aparecer).
 
