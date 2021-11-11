@@ -44,8 +44,7 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
     ```bash
     cat ~/.ssh/id_rsa.pub
     ```
-
-<img width="850" height="720" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/04-VirtualMachine.png" alt="virtual-machine">
+<img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/03-PublicSSH.png" alt="public-ssh">
 <br>
 
 ### Configuracion de maquina virtual
@@ -55,7 +54,7 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 
 ### Maquina 
 
-<img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/03-PublicSSH.png" alt="public-ssh">
+<img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/04-VirtualMachine.png" alt="virtual-machine">
 <br>
 <br>
 
