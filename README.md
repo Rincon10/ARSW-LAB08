@@ -55,7 +55,7 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 
 ### Maquina 
 
-<img width="850" height="720" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/03-PublicSSH.png" alt="public-ssh">
+<img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/03-PublicSSH.png" alt="public-ssh">
 <br>
 <br>
 
@@ -63,14 +63,14 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 
     `ssh scalability_lab@xxx.xxx.xxx.xxx`
 
-<img width="850" height="720" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/05-conexionVM.png" alt="VM-connection">
+<img  src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/05-conexionVM.png" alt="VM-connection">
 <br>
 <br>
 
 
 3. Instale node, para ello siga la sección *Installing Node.js and npm using NVM* que encontrará en este [enlace](https://linuxize.com/post/how-to-install-node-js-on-ubuntu-18.04/).
 
-<img width="850" height="720" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/06-nodeInstallation.png" alt="node-installation">
+<img  src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/06-nodeInstallation.png" alt="node-installation">
 <br>
 
 
@@ -83,7 +83,7 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
     `npm install`
 
 
-<img width="850" height="720" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/07-gitHub-npmInstall.png" alt="node-github">
+<img  src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/07-gitHub-npmInstall.png" alt="node-github">
 <br>
 
 
@@ -94,7 +94,7 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 
     `forever start FibinacciApp.js`
 
-<img width="850" height="720" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/08-npmForever.png" alt="npm-forever">
+<img  src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/08-npmForever.png" alt="npm-forever">
 <br>
 
 6. Antes de verificar si el endpoint funciona, en Azure vaya a la sección de *Networking* y cree una *Inbound port rule* tal como se muestra en la imágen. Para verificar que la aplicación funciona, use un browser y user el endpoint `http://xxx.xxx.xxx.xxx:3000/fibonacci/6`. La respuesta debe ser `The answer is 8`.
@@ -104,32 +104,32 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 7. La función que calcula en enésimo número de la secuencia de Fibonacci está muy mal construido y consume bastante CPU para obtener la respuesta. Usando la consola del Browser documente los tiempos de respuesta para dicho endpoint usando los siguintes valores:
     * 1000000
 
-    <img width="850" height="720" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/09-response-1000000.png" alt="response-1000000">
+    <img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/09-response-1000000.png" alt="response-1000000">
     <br>
 
     * 1010000
 
-    <img width="850" height="720" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/09-response-1010000.png" alt="response-1010000">
+    <img  src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/09-response-1010000.png" alt="response-1010000">
     <br>
 
     * 1020000
 
-    <img width="850" height="720" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/09-response-1020000.png" alt="response-1020000">
+    <img  src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/09-response-1020000.png" alt="response-1020000">
     <br>
 
     * 1030000
 
-    <img width="850" height="720" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/09-response-1030000.png" alt="response-1030000">
+    <img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/09-response-1030000.png" alt="response-1030000">
     <br>
 
     * 1040000
 
-    <img width="850" height="720" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/09-response-1040000.png" alt="response-1040000">
+    <img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/09-response-1040000.png" alt="response-1040000">
     <br>
 
     * 1090000  
 
-    <img width="850" height="720" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/09-response-1090000.png" alt="response-1090000">
+    <img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/09-response-1090000.png" alt="response-1090000">
     <br>
 
 8. Dírijase ahora a Azure y verifique el consumo de CPU para la VM. (Los resultados pueden tardar 5 minutos en aparecer).
