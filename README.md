@@ -198,3 +198,6 @@ newman run ARSW_LOAD-BALANCING_AZURE.postman_collection.json -e [ARSW_LOAD-BALAN
 
 
 
+## Referencias 
+
+* [Pasos rápidos: Creación y uso de un par de claves pública-privada SSH para máquinas virtuales Linux en Azure](https://docs.microsoft.com/es-es/azure/virtual-machines/linux/mac-create-ssh-keys)
