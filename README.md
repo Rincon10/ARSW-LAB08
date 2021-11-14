@@ -139,12 +139,16 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
     * Instale newman con el comando `npm install newman -g`. Para conocer más de Newman consulte el siguiente [enlace](https://learning.getpostman.com/docs/postman/collection-runs/command-line-integration-with-newman/).
     * Diríjase hasta la ruta `FibonacciApp/postman` en una maquina diferente a la VM.
     * Para el archivo `[ARSW_LOAD-BALANCING_AZURE].postman_environment.json` cambie el valor del parámetro `VM1` para que coincida con la IP de su VM.
+    <img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/09-change.png">
     * Ejecute el siguiente comando.
 
     ```
     newman run ARSW_LOAD-BALANCING_AZURE.postman_collection.json -e [ARSW_LOAD-BALANCING_AZURE].postman_environment.json -n 10 &
     newman run ARSW_LOAD-BALANCING_AZURE.postman_collection.json -e [ARSW_LOAD-BALANCING_AZURE].postman_environment.json -n 10
     ```
+
+    <img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/09-commands01.png">
+    <img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/09-commands02.png">
 
 10. La cantidad de CPU consumida es bastante grande y un conjunto considerable de peticiones concurrentes pueden hacer fallar nuestro servicio. Para solucionarlo usaremos una estrategia de Escalamiento Vertical. En Azure diríjase a la sección *size* y a continuación seleccione el tamaño `B2ms`.
 
