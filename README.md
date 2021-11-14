@@ -154,6 +154,9 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 
 ![Imágen 3](images/part1/part1-vm-resize.png)
 
+## Actualizando tamaño
+<img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/12-resize.png" alt="resizing-vm">
+
 11. Una vez el cambio se vea reflejado, repita el paso 7, 8 y 9.
     * 1000000
 
