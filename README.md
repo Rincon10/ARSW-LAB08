@@ -155,6 +155,35 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 ![Imágen 3](images/part1/part1-vm-resize.png)
 
 11. Una vez el cambio se vea reflejado, repita el paso 7, 8 y 9.
+
+    <img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/10-response-1000000.png" alt="response-1000000">
+    <br>
+
+    * 1010000
+
+    <img  src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/10-response-1010000.png" alt="response-1010000">
+    <br>
+
+    * 1020000
+
+    <img  src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/10-response-1020000.png" alt="response-1020000">
+    <br>
+
+    * 1030000
+
+    <img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/10-response-1030000.png" alt="response-1030000">
+    <br>
+
+    * 1040000
+
+    <img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/10-response-1040000.png" alt="response-1040000">
+    <br>
+
+    * 1090000  
+
+    <img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/10-response-1090000.png" alt="response-1090000">
+    <br>
+
 12. Evalue el escenario de calidad asociado al requerimiento no funcional de escalabilidad y concluya si usando este modelo de escalabilidad logramos cumplirlo.
 13. Vuelva a dejar la VM en el tamaño inicial para evitar cobros adicionales.
 
