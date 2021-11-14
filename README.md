@@ -155,6 +155,7 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 ![Imágen 3](images/part1/part1-vm-resize.png)
 
 11. Una vez el cambio se vea reflejado, repita el paso 7, 8 y 9.
+    * 1000000
 
     <img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/10-response-1000000.png" alt="response-1000000">
     <br>
@@ -183,9 +184,24 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 
     <img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/10-response-1090000.png" alt="response-1090000">
     <br>
+    
+    * Comandos ejecutados
+
+    <img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/11-Commands01.png">
+    <br>
+    
+    <img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/11-Commands02.png">
+    <br>
 
 12. Evalue el escenario de calidad asociado al requerimiento no funcional de escalabilidad y concluya si usando este modelo de escalabilidad logramos cumplirlo.
-13. Vuelva a dejar la VM en el tamaño inicial para evitar cobros adicionales.
+
+    Si se cumple con el escenario de calidad propuesto ya que al realizar la escalabilidad vertical pues al aumentar las especificaciones de la VM, se aprovechan de una mejor forma y los tiempos de respuesta de las solicitudes es menor a momentos previos.
+Evidenciendolo mucho más en la siguiente imagen, que muestra la disminución de consumo de CPU de la VM.
+
+<img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/12-cpu.png">
+<br>
+
+14. Vuelva a dejar la VM en el tamaño inicial para evitar cobros adicionales.
 
 **Preguntas**
 
