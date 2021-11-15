@@ -27,7 +27,7 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 
 * Crearemos en Azure Cloud shell, en nuestro caso lo haremos con Azure Cloud Shell (bash)
 
-<img width="850" height="720" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/02-CreacionSSH.png" alt="bash-console">
+<img width="850" height="720" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/01-CreacionBash.png" alt="bash-console">
 <br>
 
 
@@ -36,7 +36,7 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
     ```bash
     ssh-keygen -m PEM -t rsa -b 4096
     ```
-<img width="850" height="720" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/01-CreacionBash.png" alt="creating-ssh">
+<img width="850" height="720" src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/02-CreacionSSH.png" alt="creating-ssh">
 <br>
 
 * Consultaremos que llave SSH generamos, con el siguiente comando
@@ -187,14 +187,6 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 
     <img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/10-response-1090000.png" alt="response-1090000">
     <br>
-    
-    * Comandos ejecutados
-
-    <img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/11-Commands01.png">
-    <br>
-    
-    <img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/11-Commands02.png">
-    <br>
 
 12. Evalue el escenario de calidad asociado al requerimiento no funcional de escalabilidad y concluya si usando este modelo de escalabilidad logramos cumplirlo.
 
@@ -209,18 +201,91 @@ Evidenciendolo mucho más en la siguiente imagen, que muestra la disminución de
 **Preguntas**
 
 1. ¿Cuántos y cuáles recursos crea Azure junto con la VM?
+    Azure crea 5 recursos junto a la maquina virtual, los cuales son:
+
+    * Virtual network/subnet
+    * Public IP address
+    * Network security group
+    * Network interface
+    * OS disk
+
 2. ¿Brevemente describa para qué sirve cada recurso?
-3. ¿Al cerrar la conexión ssh con la VM, por qué se cae la aplicación que ejecutamos con el comando `npm FibonacciApp.js`? ¿Por qué debemos crear un *Inbound port rule* antes de acceder al servicio?
+
+    * <b>Virtual network/subnet:</b><br> 
+    
+    Este tipo de red permite que diferentes recursos de Azure como lo son las máquinas virtuales, se puedan comunicarse de forma segura entre usuarios, con Internet y con las redes locales. VNet es similar a una red tradicional que funcionaría en su propio centro de datos, pero aporta las ventajas adicionales como lo son la escalabilidad, la disponibilidad y el aislamiento.
+    
+    * <b>Public IP address:</b><br>
+    
+    Dirección IP cuyo conjunto de números que identifica, de manera lógica y jerárquica, a una interfaz en la red de un dispositivo que utilice el protocolo o que corresponde al nivel de red del modelo TCP/IP, de tal manera que sea visible con internet y algunos servicios públicos de azure, un recurso cuya dirección ip sea publica, puede ser asociado a interfaces de red de máquinas virtuales, balanceadores de carga, firewalls, etc.
+
+    
+    * <b>Network security group:</b><br>
+    
+    Se utiliza "Azure network security group" para filtrar el trafico de red desde y para los recursos de Azure en una red virtual de Azure. Un grupo de seguridad se basa principalmente en un conjunto de reglas de seguridad que permiten o niegan el trafico de red entrante o el trafico de red saliente. Para cada regla, se debera especificar origen, destino, puerto y protocolo.
+
+    * <b>Network interface:</b><br>
+
+    Componente que permite que las VM de Azure se comunique con Internet y demas recursos locales, ya que es la capa IP la que selecciona una interfaz de red para el envío de paquetes.
+    
+    * <b>OS disk:</b><br>
+
+    Almacenamiento del OS de la maquina virtual creada.
+    
+    
+3. ¿Al cerrar la conexión ssh con la VM, por qué se cae la aplicación que ejecutamos con el comando `npm FibonacciApp.js`? ¿Por qué debemos 
+crear un *Inbound port rule* antes de acceder al servicio?
+
+Cuando se inicia la conexion ssh con la VM, se inicia un proceso para este este servicio y este proceso quedara asociado al usuario el cual realizo la conexion, por lo que al cerrar la conexion este proceso se terminara.
+
 4. Adjunte tabla de tiempos e interprete por qué la función tarda tando tiempo.
+
+| N             | Standard_B1ls (s)    | Standars_B2ms (s) |
+|---------------|----------------------|-------------------|
+| 1000000       | 19.47 s              | 17.81 s           |
+| 1010000       | 19.64 s              | 18.19 s           |
+| 1020000       | 20.00 s              | 19.22 s           |
+| 1030000       | 21.34 s              | 19.75 s           |
+| 1040000       | 22.07 s              | 19.67 s           |
+| 1050000       | 21.78 s              | 19.49 s           |
+| 1060000       | 22.27 s              | 19.84 s           |
+| 1070000       | 22.61 s              | 20.27 s           |
+| 1080000       | 22.82 s              | 20.70 s           | 
+| 1090000       | 24.11 s              | 21.99 s           |
+
 5. Adjunte imágen del consumo de CPU de la VM e interprete por qué la función consume esa cantidad de CPU.
+
+<img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/13-cpu.png">
+<br>
+
+Cada petición realizada hace un gran uso de la CPU dado que se realizan cálculos con redundancia, esto porque no se esta haciendo uso de algun metodo o tecnica como la <b>memorización</b> la cual permita almacenar calculos que fueron realizados con anterioridad, además no se está implementando concurrencia lo que hace que se consuman más recursos y el tiempo de respuesta sea extenso.
+
 6. Adjunte la imagen del resumen de la ejecución de Postman. Interprete:
+
     * Tiempos de ejecución de cada petición.
+
+    <img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/11-Commands01.png">
+    <br>
+
+    El tiempo promedio de respuesta de cada petición fue de 17.4s con un total de data recivida de: 2.09MB (approx)
+    
+    <img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/11-Commands02.png">
+    <br>
+
+    El tiempo promedio de respuesta de cada petición fue de 17.5s con un total de data recivida de: 2.09MB (approx)
+
     * Si hubo fallos documentelos y explique.
+
 7. ¿Cuál es la diferencia entre los tamaños `B2ms` y `B1ls` (no solo busque especificaciones de infraestructura)?
+
 8. ¿Aumentar el tamaño de la VM es una buena solución en este escenario?, ¿Qué pasa con la FibonacciApp cuando cambiamos el tamaño de la VM?
+
 9. ¿Qué pasa con la infraestructura cuando cambia el tamaño de la VM? ¿Qué efectos negativos implica?
+
 10. ¿Hubo mejora en el consumo de CPU o en los tiempos de respuesta? Si/No ¿Por qué?
+
 11. Aumente la cantidad de ejecuciones paralelas del comando de postman a `4`. ¿El comportamiento del sistema es porcentualmente mejor?
+
 
 ### Parte 2 - Escalabilidad horizontal
 
@@ -324,3 +389,10 @@ newman run ARSW_LOAD-BALANCING_AZURE.postman_collection.json -e [ARSW_LOAD-BALAN
 ## Referencias 
 
 * [Pasos rápidos: Creación y uso de un par de claves pública-privada SSH para máquinas virtuales Linux en Azure](https://docs.microsoft.com/es-es/azure/virtual-machines/linux/mac-create-ssh-keys)
+
+* [¿Qué es Azure Virtual Network?](https://docs.microsoft.com/es-es/azure/virtual-network/virtual-networks-overview#:~:text=Azure%20Virtual%20Network%20(VNet)%20es,y%20con%20las%20redes%20locales.)
+
+* [Network security groups-Azure](https://docs.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview)
+* [Create an Inbound Port Rule](https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-firewall/create-an-inbound-port-rule)
+* []()
+* []()
