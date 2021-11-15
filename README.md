@@ -140,6 +140,7 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
     * Diríjase hasta la ruta `FibonacciApp/postman` en una maquina diferente a la VM.
     * Para el archivo `[ARSW_LOAD-BALANCING_AZURE].postman_environment.json` cambie el valor del parámetro `VM1` para que coincida con la IP de su VM.
     <img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/09-change.png">
+    
     * Ejecute el siguiente comando.
 
     ```
@@ -278,14 +279,54 @@ Cada petición realizada hace un gran uso de la CPU dado que se realizan cálcul
 
 7. ¿Cuál es la diferencia entre los tamaños `B2ms` y `B1ls` (no solo busque especificaciones de infraestructura)?
 
+| Size             | vCPUs  | RAM (GiB)  |  Data disks| Max IOPS |Temp storage (GiB) | Cost/month |
+|------------------|--------|------------|------------|----------|-------------------|------------|
+|B1ls              |  1     |0.5         |2           |160       |4                  |3,80 US$    |
+|B2ms              |  2     |8           |4           |1920      |16                 |60,74 US$   |
+
+En este caso ambos tamaños son utilizados para desarrollo y pruebas que por lo general su trafico de datos es bajo/medio.
+
+
 8. ¿Aumentar el tamaño de la VM es una buena solución en este escenario?, ¿Qué pasa con la FibonacciApp cuando cambiamos el tamaño de la VM?
+
+Aunque aumentar el tamaño de la máquina virtual significa una disminución de uso recursos (como se pudo observar en el consumo de CPU), aun hace falta replantear FibonacciApp de tal manera que se memoricen valores anteriormente calculados, esto para lograr disminuir aun mas los tiempos de respuesta de la aplicación.
+
+Sin embargo no hay que olvidar que es un sólo servidor el que está atendiendo todas las peticiones web y por lo tanto no garantizaria siempre una alta disponibilidad ante un desbordamiento de peticiones.
 
 9. ¿Qué pasa con la infraestructura cuando cambia el tamaño de la VM? ¿Qué efectos negativos implica?
 
+La maquina virtual se reinicia y a causa de todo esto se debe de realizar nuevamente una conexion segura usando el protocolo ssh, causando que en ese tiempo de reinicio la maquina no prestara su servicio web, causando que todas las peticiones que ocurran en este lapso de tiempo no sean atendidas. 
+
 10. ¿Hubo mejora en el consumo de CPU o en los tiempos de respuesta? Si/No ¿Por qué?
+
+Si, dado que la máquina virtual dispone de más recursos para realizar sus cálculos y atender a las peticiones.
 
 11. Aumente la cantidad de ejecuciones paralelas del comando de postman a `4`. ¿El comportamiento del sistema es porcentualmente mejor?
 
+Para realizar eso usaremos el siguiente comando, en diferentes consolas:
+```bash
+newman run ARSW_LOAD-BALANCING_AZURE.postman_collection.json -e [ARSW_LOAD-BALANCING_AZURE].postman_environment.json -n 10 
+```
+
+* Informe petición 01
+
+<img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/11-Postman01.png" alt="Postman01.png">
+<br>
+* Informe petición 02
+
+<img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/11-Postman02.png" alt="Postman02.png">
+<br>
+* Informe petición 03
+
+<img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/11-Postman03.png" alt="Postman03.png">
+<br>
+* Informe petición 04
+
+<img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/11-Postman04.png" alt="Postman04.png">
+<br>
+
+
+El comportamiento del sistema no mejoró.
 
 ### Parte 2 - Escalabilidad horizontal
 
