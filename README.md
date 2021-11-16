@@ -453,9 +453,11 @@ El proposito del Load Balancing Rule es definir como se debera distribuir el tra
 
 Se define la configuración de IP del frontend para el tráfico entrante y el pool de IP del backend para recibir el tráfico. El puerto de origen y destino se definen en la regla. En azure exiten 3 tipos de sesiones de persistencia:
 
-    * **Ninguno(hash-based):** Peticiones recurrentes de un mismo cliente podrían ser atendidas por máquinas diferentes del backend (No importa el estado de una peticion).
-    * **IP del cliente:** : Todas las peticiones que procedan de una misma IP de origen serás atendidas por la misma máquina del backend.
-    * **IP y protocolo del cliente:** Todas las peticiones que procedan de una misma IP y puerto de origen serán atendidas por la misma máquina del backend, pero si vienen de la misma IP pero con un puerto de origen diferente podrían ser atendidas por otra máquina del backend.
+ * **Ninguno(hash-based):** Peticiones recurrentes de un mismo cliente podrían ser atendidas por máquinas diferentes del backend (No importa el estado de una peticion).
+ 
+ * **IP del cliente:** : Todas las peticiones que procedan de una misma IP de origen serás atendidas por la misma máquina del backend.
+
+ * **IP y protocolo del cliente:** Todas las peticiones que procedan de una misma IP y puerto de origen serán atendidas por la misma máquina del backend, pero si vienen de la misma IP pero con un puerto de origen diferente podrían ser atendidas por otra máquina del backend.
 
 * ¿Qué es una *Virtual Network*? ¿Qué es una *Subnet*? ¿Para qué sirven los *address space* y *address range*?
 
