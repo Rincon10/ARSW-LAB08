@@ -140,7 +140,7 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
     * Diríjase hasta la ruta `FibonacciApp/postman` en una maquina diferente a la VM.
     * Para el archivo `[ARSW_LOAD-BALANCING_AZURE].postman_environment.json` cambie el valor del parámetro `VM1` para que coincida con la IP de su VM.
     <img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/09-change.png">
-    
+
     * Ejecute el siguiente comando.
 
     ```
@@ -402,6 +402,11 @@ http://52.155.223.248/fibonacci/1
 ```
 
 2. Realice las pruebas de carga con `newman` que se realizaron en la parte 1 y haga un informe comparativo donde contraste: tiempos de respuesta, cantidad de peticiones respondidas con éxito, costos de las 2 infraestrucruras, es decir, la que desarrollamos con balanceo de carga horizontal y la que se hizo con una maquina virtual escalada.
+
+* Realizamos la actualización de la direccion ip en el archivo <i><b>[ARSW_LOAD-BALANCING_AZURE].postman_environment.json</b></i>
+
+<img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/13-Ip-balanceador.png" alt="Ip-Balanceador-json">
+<br>
 
 3. Agregue una 4 maquina virtual y realice las pruebas de newman, pero esta vez no lance 2 peticiones en paralelo, sino que incrementelo a 4. Haga un informe donde presente el comportamiento de la CPU de las 4 VM y explique porque la tasa de éxito de las peticiones aumento con este estilo de escalabilidad.
 
