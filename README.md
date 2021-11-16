@@ -420,14 +420,48 @@ newman run ARSW_LOAD-BALANCING_AZURE.postman_collection.json -e [ARSW_LOAD-BALAN
 **Preguntas**
 
 * ¿Cuáles son los tipos de balanceadores de carga en Azure y en qué se diferencian?, ¿Qué es SKU, qué tipos hay y en qué se diferencian?, ¿Por qué el balanceador de carga necesita una IP pública?
+    * Tipos de balanceadores:
+        * **Balanceador de carga interno( Privado ):** Este balanceador de carga se encarga de equilibrar la carga de trafico de una red privada ( se utilizan unicamente direcciones ip privadas en la interfaz).
+
+        * **Balanceador de carga publico:** Este balanceador de carga se encarga de equilibrar la carga de trafico de redes publicas, especificamente de la carga proveniente de internet, la dirección ip pública y el puerto son asigandos. 
+
+        * **Balanceador de carga de puerta de enlace:** Es un balanceador que se adapta a escenarios de alto rendimiento y alta disponibilidad con dispositivos virtuales de red (NVA) de terceros. Con las capacidades de Gateway Load Balancer, puede implementar, escalar y administrar NVA fácilmente. Encadenar un balanceador de carga de puerta de enlace a su punto final público solo requiere un clic.
+        
+    * SKU( Stock Keeping Unit) Azure:
+        * Representa una unidad de mantenimiento de existencias, lo cual significa que es un codigo unico asignado a un servicio o producto de Azure, el cual nos permite a nosotros como usuarios la posibilidad de comprar existencias de los mismos.
+    * Tipos de SKU:
+        *  **Estándar:** Productos estandar los cuales se pueden vender de manera individual o en paquetes, 
+        *  **Esamblaje: Aquellos productos que se deben ensamblar antes de un envio, todos los SKU deberan encontrarse dentro de una misma instalacion.** 
+        *  **Virtual: Aquellos productos que son virtuales, es decir que no necesitan de una instalacion fisica evitando asi un nivel de inventario** 
+        *  **Componente: Productos incluidos en paquetes, esamblajes y colecciones, los cuales no se pueden vender de manera individual** 
+
 * ¿Cuál es el propósito del *Backend Pool*?
+
+ El proposito de backend pool es el almacenamiento las direcciones IP de las máquinas virtuales (NICs) conectadas al balanceador de carga, ademas de esto este componente define el grupo de recursos que brindarán tráfico para una Load Balancing Rule determinada.
+ 
+ El backend pool es el conjunto de máquinas virtuales o instancias que atienden las solicitudes entrantes. Para escalar de manera rentable y satisfacer grandes volúmenes de tráfico entrante, generalmente se recomienda agregar más instancias a este grupo.
+
 * ¿Cuál es el propósito del *Health Probe*?
+
+El proposito del heralth probe es  la supervicion de el estado de la aplicación, este se utiliza para detectar fallos de una aplicación en un endpoint del backend; Las respuestas de Health Probe determinan qué instancias del backend pool recibirán nuevos flujos.
+
+Se configura un Health Probe que el balanceador de carga puede utilizar para determinar si su instancia está en buen estado. Si su instancia falla en su Health Probe suficientes veces, dejará de recibir tráfico hasta que empiece a pasar Health Probe de nuevo.
+
 * ¿Cuál es el propósito de la *Load Balancing Rule*? ¿Qué tipos de sesión persistente existen, por qué esto es importante y cómo puede afectar la escalabilidad del sistema?.
+
 * ¿Qué es una *Virtual Network*? ¿Qué es una *Subnet*? ¿Para qué sirven los *address space* y *address range*?
-* ¿Qué son las *Availability Zone* y por qué seleccionamos 3 diferentes zonas?. ¿Qué significa que una IP sea *zone-redundant*?
+
+* ¿Qué son las *Availability Zone* y por qué seleccionamos 3 diferentes zonas?. ¿Qué significa que una IP sea 
+*zone-redundant*?
+
 * ¿Cuál es el propósito del *Network Security Group*?
+
 * Informe de newman 1 (Punto 2)
+
 * Presente el Diagrama de Despliegue de la solución.
+
+<img src="https://github.com/Ersocaut/ARSW-Lab08/blob/master/images/solution/13-Diagrama-Despliegue.png" alt="Diagrama-Despliegue">
+<br>
 
 
 
@@ -439,6 +473,15 @@ newman run ARSW_LOAD-BALANCING_AZURE.postman_collection.json -e [ARSW_LOAD-BALAN
 * [¿Qué es Azure Virtual Network?](https://docs.microsoft.com/es-es/azure/virtual-network/virtual-networks-overview#:~:text=Azure%20Virtual%20Network%20(VNet)%20es,y%20con%20las%20redes%20locales.)
 
 * [Network security groups-Azure](https://docs.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview)
+
 * [Create an Inbound Port Rule](https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-firewall/create-an-inbound-port-rule)
-* []()
-* []()
+
+* [Azure Load Balancer new distribution mode](https://azure.microsoft.com/en-us/blog/azure-load-balancer-new-distribution-mode/)
+
+* [Azure Load Balancer SKUs](https://docs.microsoft.com/en-us/azure/load-balancer/skus)
+
+* [¿Qué significa SKU en Microsoft azure?](https://docs.microsoft.com/en-us/partner-center/develop/product-resources#sku)
+
+* [¿Qué es Azure Load Balancer?](https://docs-microsoft-com.translate.goog/en-us/azure/load-balancer/load-balancer-overview?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es-419&_x_tr_pto=nui)
+
+* [Gateway Load Balancer (Preview)](https://docs.microsoft.com/en-us/azure/load-balancer/gateway-overview)
