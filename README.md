@@ -449,14 +449,42 @@ Se configura un Health Probe que el balanceador de carga puede utilizar para det
 
 * ¿Cuál es el propósito de la *Load Balancing Rule*? ¿Qué tipos de sesión persistente existen, por qué esto es importante y cómo puede afectar la escalabilidad del sistema?.
 
+El proposito del Load Balancing Rule es definir como se debera distribuir el trafico de las maquinas virtuales dentro del pool de backend.
+
+Se define la configuración de IP del frontend para el tráfico entrante y el pool de IP del backend para recibir el tráfico. El puerto de origen y destino se definen en la regla. En azure exiten 3 tipos de sesiones de persistencia:
+
+    * **Ninguno(hash-based):** Peticiones recurrentes de un mismo cliente podrían ser atendidas por máquinas diferentes del backend (No importa el estado de una peticion).
+    * **IP del cliente:** : Todas las peticiones que procedan de una misma IP de origen serás atendidas por la misma máquina del backend.
+    * **IP y protocolo del cliente:** Todas las peticiones que procedan de una misma IP y puerto de origen serán atendidas por la misma máquina del backend, pero si vienen de la misma IP pero con un puerto de origen diferente podrían ser atendidas por otra máquina del backend.
+
 * ¿Qué es una *Virtual Network*? ¿Qué es una *Subnet*? ¿Para qué sirven los *address space* y *address range*?
+
+    * Red Virtual: Una red virtual es un una red que permite la interconexino de dispositivos y maquinas virtuales metiante software, independientemente de un ubicacion fisica.
+
+    * Subnet: Es una segmentacion de una red fisica o red virtual, estas segmentaciones contaran con su propio rando de direcciones ip segun como se realice la particion de la direccion ip original.
+
+    * Address space: Cuando se crea una red virtual, se debe de especificar un rango de direcciones ip las cuales no se superponen unas con otras( En otras palabras es la direccion ip que identifica la red, eg: 10.0.0.0/24) .
+
+
+    * Address range: Determina el numero de direcciones que se tienen o se pueden tener en un address space y dependiendo de la cantidad de recursos que se necesiten en la red virtual, el rango aumentará o disminuirá.
 
 * ¿Qué son las *Availability Zone* y por qué seleccionamos 3 diferentes zonas?. ¿Qué significa que una IP sea 
 *zone-redundant*?
 
+    * Availability Zone: Una availability zone, son zonas que buscan garantizar una alta disponibilidad replicando sus aplicaciones y datos con el fin de protegerlos de puntos de fallo, estas zonas se encuentran dentro de una region y cada una de ellas se compone de uno o mas centros de datos con refrigeracion y redes independientes.
+
+    En este laboratorio seleccionamos 3 zonas de disponibilidad para garantizar una mejor disponibilidad y tolarancia a fallos dentro del sistema.
+    
+    * IP zone-redundant: Cuando utilizamos una ip zone-redundant azure separa física y lógicamente el gateway dentro de una region, lo cual permite mejorar la conectividad de la red privada y disminuye fallos a nivel de zona de disponibilidad.
+
+
 * ¿Cuál es el propósito del *Network Security Group*?
 
+El proposito de un Network security group es poder lograr filtrar el trafico desde y hacia los recursos de una red virtual de Azure, un grupo de seguridad nos permite definir diferentes reglas de entrada y salida para que permitan o nieguen el trafico de datos entre los recursos de Azure (Similar a las funcionalidades de un Firewall).
+
 * Informe de newman 1 (Punto 2)
+
+
 
 * Presente el Diagrama de Despliegue de la solución.
 
@@ -485,3 +513,5 @@ Se configura un Health Probe que el balanceador de carga puede utilizar para det
 * [¿Qué es Azure Load Balancer?](https://docs-microsoft-com.translate.goog/en-us/azure/load-balancer/load-balancer-overview?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es-419&_x_tr_pto=nui)
 
 * [Gateway Load Balancer (Preview)](https://docs.microsoft.com/en-us/azure/load-balancer/gateway-overview)
+ 
+* [¿Qué son las redes virtuales?](https://www.vmware.com/es/topics/glossary/content/virtual-networking.html)
